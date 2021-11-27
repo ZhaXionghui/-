@@ -1,0 +1,4 @@
+corpid: #企业微信ID
+corpsecret: #自建应用的secret
+receive_token: #随机获取应用参数
+AESKey: #随机获取应用参数
