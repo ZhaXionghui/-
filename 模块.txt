@@ -38,19 +38,19 @@ packaging	21.3	卸载
 parso	0.8.2	卸载
 pexpect	4.8.0	卸载
 pickleshare	0.7.5	卸载
-Pillow	8.3.2	卸载
-pip	21.3.1	卸载
-platformdirs	2.4.0	卸载
-prompt-toolkit	3.0.19	卸载
-ptyprocess	0.7.0	卸载
-pycrypto	2.6.1	卸载
-pydub	0.25.1	卸载
-pygame	2.0.2	卸载
-pyglet	1.5.20	卸载
-Pygments	2.9.0	卸载
-PyOpenGL	3.1.5	卸载
-pyparsing	2.4.7	卸载
-pyreadline	2.1	卸载
+Pillow	8.3.2	
+pip	21.3.1	
+platformdirs	2.4.0	
+prompt-toolkit	3.0.19	
+ptyprocess	0.7.0	
+pycrypto	2.6.1	
+pydub	0.25.1	
+pygame	2.0.2	
+pyglet	1.5.20	
+Pygments	2.9.0	
+PyOpenGL	3.1.5	
+pyparsing	2.4.7	
+pyreadline	2.1	
 pyrr	                0.10.3	
 python-dateutil	2.8.2	
 PyYAML	                5.4.1	
