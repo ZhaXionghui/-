@@ -1,4 +1,4 @@
- -README.md 说明文档
+ -|README.md 说明文档
  -WXBizMsgCrypt.py 来自企业微信文档的适用于企业微信的加解密库
  -api.py 自定义的函数库用于参数获取
  -ierror.py 来自企业微信文档错误码解释文件
