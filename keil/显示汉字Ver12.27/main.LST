@@ -1,0 +1,263 @@
+C51 COMPILER V9.59.0.0   MAIN                                                              12/28/2021 20:29:25 PAGE 1   
+
+
+C51 COMPILER V9.59.0.0, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN main.OBJ
+COMPILER INVOKED BY: E:\Keil_v5\C51\BIN\C51.EXE main.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND TABS(2)
+
+line level    source
+
+   1          #include <STC89C5xRC.H>
+*** WARNING C318 IN LINE 1 OF main.c: can't open file 'STC89C5xRC.H'
+   2          #include <intrins.h>
+   3          #include <reg51.h>
+   4          #include "lcd12864.h"
+   5          
+   6          unsigned char js=0;
+   7          
+   8          
+   9          void Delay100ms()   //@11.0592MHz 延时100ms
+  10          {
+  11   1        unsigned char i, j;
+  12   1      
+  13   1        i = 180;
+  14   1        j = 73;
+  15   1        do
+  16   1        {
+  17   2          while (--j);
+  18   2        } while (--i);
+  19   1      }
+  20          
+  21          
+  22          void Delay5000ms()    //@11.0592MHz
+  23          {
+  24   1        unsigned char i, j, k;
+  25   1      
+  26   1        _nop_();
+  27   1        i = 36;
+  28   1        j = 5;
+  29   1        k = 211;
+  30   1        do
+  31   1        {
+  32   2          do
+  33   2          {
+  34   3            while (--k);
+  35   3          } while (--j);
+  36   2        } while (--i);
+  37   1      }
+  38          
+  39          
+  40          void bee3()        //蜂鸣器响3次
+  41          {
+  42   1        int a=0;
+  43   1        while(a<3)
+  44   1        {
+  45   2          P20=0;Delay100ms();
+  46   2          P20=1;Delay100ms();
+  47   2          a=a+1;
+  48   2        } 
+  49   1        return;
+  50   1      }
+  51          
+  52          void bee1()       //蜂鸣器响1次
+  53          {
+  54   1        int a=0;
+C51 COMPILER V9.59.0.0   MAIN                                                              12/28/2021 20:29:25 PAGE 2   
+
+  55   1        while(a<1)
+  56   1        {
+  57   2          P20=0;Delay100ms();
+  58   2          P20=1;Delay100ms();
+  59   2          a=a+1;
+  60   2        } 
+  61   1        return;
+  62   1      }
+  63          
+  64          unsigned char code CharCode1[]="欢迎使用求助机";
+  65          unsigned char code CharCode2[]="我生病了      ";
+  66          unsigned char code CharCode3[]="着火了        ";
+  67          unsigned char code CharCode4[]="电路故障      ";
+  68          unsigned char code CharCode5[]="其他求助      ";  
+  69          unsigned char code CharCode6[]="WiFi连接成功  ";  //设置个字符串
+  70          
+  71          
+  72          void com1() interrupt 4
+  73          {
+  74   1      
+  75   1      
+  76   1        if(RI)
+  77   1        {
+  78   2          RI = 0;
+  79   2      //    com[js]=SBUF;
+  80   2          js = js+1;
+  81   2          
+  82   2      
+  83   2        }
+  84   1      }
+  85          
+  86          
+  87          void main()         //主函数开始
+  88          {
+  89   1        unsigned char i;
+  90   1        Delay100ms();
+  91   1        LCD12864_Init();    //定义一些变量
+  92   1        
+  93   1        bee3();             //蜂鸣器响3次
+  94   1        
+  95   1        LCD12864_SetWindow(0, 0);
+  96   1          while(CharCode1[i]!='\0')          //显示字符串_1
+  97   1        {
+  98   2            LCD12864_WriteData(CharCode1[i]);
+  99   2            i++;
+ 100   2            if(i==16)  //第一行满写第三行
+ 101   2            {LCD12864_SetWindow(1,0);}
+ 102   2            if(i==32)  //第三行满写第四行
+ 103   2            {LCD12864_SetWindow(2,0);}
+ 104   2            if(i==48)  //第三行满写第四行
+ 105   2            {LCD12864_SetWindow(3,0);}    
+ 106   2        }
+ 107   1        
+ 108   1        
+ 109   1        
+ 110   1        
+ 111   1        
+ 112   1        
+ 113   1      TMOD |= 0x20;   //
+ 114   1      SCON = 0x50;
+ 115   1      PCON = 0x80;
+ 116   1      TH1 = 0xfa; //
+C51 COMPILER V9.59.0.0   MAIN                                                              12/28/2021 20:29:25 PAGE 3   
+
+ 117   1      TL1 = 0xfa; //
+ 118   1      ES = 1; 
+ 119   1      EA = 1; //
+ 120   1      TR1 = 1;//
+ 121   1        
+ 122   1        
+ 123   1        
+ 124   1      
+ 125   1      
+ 126   1        
+ 127   1        i=0;
+ 128   1        Delay5000ms();
+ 129   1        
+ 130   1        P21=0;
+ 131   1        js=0;
+ 132   1        
+ 133   1        
+ 134   1        while(js<35);
+ 135   1          
+ 136   1        P21=1;
+ 137   1      
+ 138   1        
+ 139   1        
+ 140   1        
+ 141   1       
+ 142   1        
+ 143   1      
+ 144   1      
+ 145   1      
+ 146   1      
+ 147   1        
+ 148   1        LCD12864_SetWindow(0, 0);
+ 149   1          while(CharCode6[i]!='\0')          //显示字符串_1
+ 150   1        {
+ 151   2            LCD12864_WriteData(CharCode6[i]);
+ 152   2            i++;
+ 153   2            if(i==16)  //第一行满写第三行
+ 154   2            {LCD12864_SetWindow(1,0);}
+ 155   2            if(i==32)  //第三行满写第四行
+ 156   2            {LCD12864_SetWindow(2,0);}
+ 157   2            if(i==48)  //第三行满写第四行
+ 158   2            {LCD12864_SetWindow(3,0);}    
+ 159   2        }
+ 160   1        
+ 161   1      
+ 162   1        
+ 163   1        
+ 164   1        while(1)
+ 165   1      {
+ 166   2        i=0;
+ 167   2        LCD12864_SetWindow(0, 0);         //定义变量后，依次判断哪个按钮被按下，不妨设P12
+ 168   2        OPTION: 
+ 169   2        if(P12==0)                        
+ 170   2          { 
+ 171   3            while(CharCode2[i]!='\0')     //按下  P12后显示字符串_2
+ 172   3            {
+ 173   4              LCD12864_WriteData(CharCode2[i]);
+ 174   4              i++;
+ 175   4              if(i==16)  //第一行满写第三行
+ 176   4              {LCD12864_SetWindow(1,0);}
+ 177   4              if(i==32)  //第三行满写第四行
+ 178   4              {LCD12864_SetWindow(2,0);}
+C51 COMPILER V9.59.0.0   MAIN                                                              12/28/2021 20:29:25 PAGE 4   
+
+ 179   4              if(i==48)  //第三行满写第四行
+ 180   4              {LCD12864_SetWindow(3,0);}
+ 181   4            }
+ 182   3            bee1();                      //写完后蜂鸣器响1次，整个程序在下一行卡住，至此所有过程结束
+ 183   3            goto OPTION;
+ 184   3          } 
+ 185   2        else if(P13==0)
+ 186   2          { while(CharCode3[i]!='\0')
+ 187   3            {
+ 188   4              LCD12864_WriteData(CharCode3[i]);
+ 189   4              i++;
+ 190   4              if(i==16)  //第一行满写第三行
+ 191   4              {LCD12864_SetWindow(1,0);}
+ 192   4              if(i==32)  //第三行满写第四行
+ 193   4              {LCD12864_SetWindow(2,0);}
+ 194   4              if(i==48)  //第三行满写第四行
+ 195   4              {LCD12864_SetWindow(3,0);}
+ 196   4            }
+ 197   3              bee1();
+ 198   3              goto OPTION;
+ 199   3          } 
+ 200   2        else if(P14==0)
+ 201   2          { while(CharCode4[i]!='\0')
+ 202   3            {
+ 203   4              LCD12864_WriteData(CharCode4[i]);
+ 204   4              i++;
+ 205   4              if(i==16)  //第一行满写第三行
+ 206   4              {LCD12864_SetWindow(1,0);}
+ 207   4              if(i==32)  //第三行满写第四行
+ 208   4              {LCD12864_SetWindow(2,0);}
+ 209   4              if(i==48)  //第三行满写第四行
+ 210   4              {LCD12864_SetWindow(3,0);}
+ 211   4            }
+ 212   3            bee1();
+ 213   3            goto OPTION;
+ 214   3          } 
+ 215   2        else if(P15==0)
+ 216   2          { while(CharCode5[i]!='\0')
+ 217   3            {
+ 218   4              LCD12864_WriteData(CharCode5[i]);
+ 219   4              i++;
+ 220   4              if(i==16)  //第一行满写第三行
+ 221   4              {LCD12864_SetWindow(1,0);}
+ 222   4              if(i==32)  //第三行满写第四行
+ 223   4              {LCD12864_SetWindow(2,0);}
+ 224   4              if(i==48)  //第三行满写第四行
+ 225   4              {LCD12864_SetWindow(3,0);}
+ 226   4            }
+ 227   3            bee1();
+ 228   3            goto OPTION;
+ 229   3          } 
+ 230   2      }
+ 231   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    486    ----
+   CONSTANT SIZE    =     90    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      1       1
+   IDATA SIZE       =   ----    ----
+C51 COMPILER V9.59.0.0   MAIN                                                              12/28/2021 20:29:25 PAGE 5   
+
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  1 WARNING(S),  0 ERROR(S)
