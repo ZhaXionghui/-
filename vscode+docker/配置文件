@@ -1,0 +1,12 @@
+ __pycache__
+api.py    
+config.yaml  
+ierror.py  main.py               
+namotechnology.cn.pem  
+requirements.txt  
+WXBizMsgCrypt.py
+build.sh  
+Dockerfile   
+kill.sh   
+namotechnology.cn.key            
+run.sh
