@@ -1,5 +1,7 @@
 - README.md                      | 说明文档
 
+! [配置文件] (https://github.com/ZhaXionghui/-/blob/main/vscode%2Bdocker/%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6.png)
+
 ```shell
 
 ## 企业微信机器人-山大威海大一上作业B
@@ -13,7 +15,7 @@
 - 网站及所需用的地址及样例.txt    | 网站及所需用的地址及样例
 
 - vscode+docker                  | 新解决方案
-![配置文件](https://github.com/ZhaXionghui/-/blob/main/vscode%2Bdocker/%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6.png)
+! [配置文件] (https://github.com/ZhaXionghui/-/blob/main/vscode%2Bdocker/%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6.png)
 
 
 ## 企业微信机器人-山大威海大一上作业B
