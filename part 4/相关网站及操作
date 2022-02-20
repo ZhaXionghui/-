@@ -1,0 +1,22 @@
+服务器部署
+
+腾讯云：(https://cloud.tencent.com/)
+docker started：(https://docs.docker.com/get-started/02_our_app/)
+docker-compose：(https://docs.docker.com/compose/install/)
+
+安装 curl
+sudo apt install -y curl
+
+安装
+sudo curl -L "https://github.com/docker/compose/releases/download/1.28.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+
+授权
+sudo chmod +x /usr/local/bin/docker-compose
+
+查看是否安装成功
+docker-compose version
+
+运行
+docker-compose up
+
+version 2 参考(https://docs.docker.com/compose/compose-file/compose-file-v2/#reference-and-guidelines)
