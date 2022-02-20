@@ -1,0 +1,46 @@
+version: '2'
+services:
+  
+  # 两个web服务，后启动
+  http_server:
+    # 制定目录下的dockerfile构建镜像
+    build: ./http_server/.
+    links:
+      - redis
+    # 用来指定宿主机和容器端口映射 相当于 docker run -p
+    ports: 
+      - 8888:8888
+    # 用来指定启动容器使用网桥 相当于 docker run --network
+    networks:
+      - helpdesk_network
+    # 依赖redis,使redis先启动
+    depends_on:
+      - redis
+    # Specify an absolute path mapping
+    volumes:
+      - /root/ssl:/ssl
+  
+  websocket_server:
+    build: ./websocket_server/.
+    links:
+      - redis
+    ports:
+      - 2333:2333
+    networks:
+      - helpdesk_network
+    depends_on:
+      - redis
+  
+  # redis服务，先启动
+  redis:
+    # 指定启动容器使用的镜像 相当于docker run image
+    image: redis
+    networks:
+      - helpdesk_network
+    # 指定构建镜像的过程中暴露的端口号
+    expose:
+      - 6666
+  
+  # 声明使用网桥
+networks:
+  helpdesk_network: {}
