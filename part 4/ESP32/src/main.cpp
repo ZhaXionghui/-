@@ -18,7 +18,7 @@
 #include <Button2.h>           // 基于Arduino架构的的多按钮驱动库
 #include <EasyBuzzer.h>        // 基于Arduino架构的蜂鸣器动库
 #include <WiFi.h>              // 基于Arduino架构的WIFI连接库
-#include <WebSocketClient.h>   // 基于Arduino架构的Webscoket协议库
+#include <WebSocketsClient.h>   // 基于Arduino架构的Webscoket协议库
 
 #ifdef U8X8_HAVE_HW_SPI        // SPI通讯
 #include <SPI.h>
